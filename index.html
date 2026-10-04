@@ -1,1 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rumi Market y Pet Shop | Huancayo</title>
 
+    <!-- Fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* ===================================================
+           MIS VARIABLES DE COLOR (Basadas en el logo de la empresa)
+        =================================================== */
+        :root {
+            --verde-oscuro: #0f382c;
+            --verde-medio: #144937;
+            --verde-acento: #22A06B;
+            --amarillo-logo: #FFB800;
+            --fondo-oscuro: #071C15;
+            --texto-blanco: #FFFFFF;
+            --texto-gris: #CBD5E1;
+            --borde-transparente: rgba(255, 255, 255, 0.12);
+        }
+
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--fondo-oscuro);
+            color: var(--texto-blanco);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .mi-logo {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .contenedor {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===================================================
+           BARRA DE NAVEGACIÓN
+        =================================================== */
+        .mi-navbar {
+            position: fixed;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1100px;
+            background: rgba(15, 56, 44, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--borde-transparente);
+            border-radius: 40px;
+            padding: 12px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .mi-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .tag-logo {
+            background: var(--amarillo-logo);
+            color: var(--verde-oscuro);
+            font-weight: 800;
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+        }
+
+        .texto-logo {
+            color: var(--texto-blanco);
+            font-size: 1rem;
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .texto-logo span {
+            font-size: 0.6rem;
+            color: var(--amarillo-logo);
+            letter-spacing: 1px;
+        }
+
+        .menu-navegacion {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .menu-navegacion a {
+            color: var(--texto-gris);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .menu-navegacion a:hover {
+            color: var(--amarillo-logo);
+        }
+
+        /* ===================================================
+           SECCIÓN HERO (INICIO)
+        =================================================== */
+        .seccion-inicio {
+            padding-top: 160px;
+            padding-bottom: 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .etiqueta-bienvenida {
+            display: inline-block;
+            background: rgba(34, 160, 107, 0.2);
+            border: 1px solid var(--verde-acento);
+            color: #4ade80;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .seccion-inicio h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--texto-blanco);
+        }
+
+        .seccion-inicio h1 span {
+            color: var(--amarillo-logo);
+        }
+
+        .seccion-inicio p {
+            color: var(--texto-gris);
+            margin-bottom: 30px;
+        }
+
+        .grupo-botones {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-principal {
+            background: var(--amarillo-logo);
+            color: var(--verde-oscuro);
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-principal:hover {
+            transform: translateY(-3px);
+            background: #e0a300;
+        }
+
+        .btn-wsp {
+            background: #25D366;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-wsp:hover {
+            transform: translateY(-3px);
+        }
+
+        .tarjeta-banner img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 1px solid var(--borde-transparente);
+        }
+
+        /* ===================================================
+           SECCIÓN NOSOTROS (ORIGEN QUECHUA)
+        =================================================== */
+        .seccion {
+            padding: 80px 0;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitulo-seccion {
+            text-align: center;
+            color: var(--amarillo-logo);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .grilla-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .tarjeta-estilo {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--borde-transparente);
+            border-radius: 20px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .tarjeta-estilo:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .icono-tarjeta {
+            font-size: 2rem;
+            color: var(--amarillo-logo);
+            margin-bottom: 15px;
+        }
+
+        .tarjeta-estilo h3 {
+            margin-bottom: 10px;
+        }
+
+        .tarjeta-estilo p {
+            color: var(--texto-gris);
+            font-size: 0.95rem;
+        }
+
+        /* ===================================================
+           SECCIÓN PRODUCTOS
+        =================================================== */
+        .grilla-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .caja-categoria {
+            background: var(--verde-medio);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid var(--borde-transparente);
+        }
+
+        .caja-categoria h3 {
+            color: var(--amarillo-logo);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lista-productos {
+            list-style: none;
+        }
+
+        .lista-productos li {
+            background: rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .lista-productos i {
+            color: var(--verde-acento);
+        }
+
+        /* ===================================================
+           GALERÍA
+        =================================================== */
+        .grilla-galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .item-galeria {
+            height: 220px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--borde-transparente);
+        }
+
+        .item-galeria img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .item-galeria:hover img {
+            transform: scale(1.08);
+        }
+
+        /* ===================================================
+           CONTACTO Y PIE DE PÁGINA
+        =================================================== */
+        .caja-contacto {
+            background: var(--verde-medio);
+            border-radius: 20px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .info-item i {
+            font-size: 1.3rem;
+            color: var(--amarillo-logo);
+        }
+
+        .campo-input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--borde-transparente);
+            border-radius: 8px;
+            color: white;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .campo-input:focus {
+            border-color: var(--amarillo-logo);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--borde-transparente);
+            color: var(--texto-gris);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .seccion-inicio, .caja-contacto { grid-template-columns: 1fr; }
+            .menu-navegacion { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENÚ SUPERIOR DE NAVEGACIÓN -->
+    <nav class="mi-navbar">
+        <a href="#inicio" class="mi-logo">
+            <span class="tag-logo">RUMI</span>
+            <div class="texto-logo">
+                MARKET
+                <span>PET SHOP</span>
+            </div>
+        </a>
+        <ul class="menu-navegacion">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- SECCIÓN DE INICIO / HERO -->
+    <section id="inicio" class="contenedor seccion-inicio">
+        <div>
+            <span class="etiqueta-bienvenida"><i class="fas fa-store"></i> Ubicados en Huancayo</span>
+            <h1>Todo para tu hogar y tu <span>fiel compañero</span></h1>
+            <p>En Rumi Market y Pet Shop combinamos la venta de abarrotes de primera necesidad con el mejor cuidado, ropa y alimento para tus mascotas.</p>
+            <div class="grupo-botones">
+                <a href="#productos" class="btn-principal">Ver Productos</a>
+                <a href="https://wa.me/51927195817" target="_blank" class="btn-wsp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+        </div>
+        <div class="tarjeta-banner">
+            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?q=80&w=800" alt="Mascota Rumi Market">
+        </div>
+    </section>
+
+    <!-- SECCIÓN SOBRE NOSOTROS -->
+    <section id="nosotros" class="seccion contenedor">
+        <span class="subtitulo-seccion">Identidad Institucional</span>
+        <h2 class="titulo-seccion">¿Qué significa Rumi?</h2>
+        <p style="text-align: center; color: var(--texto-gris); max-width: 700px; margin: 0 auto 40px auto;">
+            En quechua, <strong>Rumi</strong> significa <em>"Piedra"</em>, representando la solidez, firmeza y confianza que le ofrecemos a cada cliente en Huancayo.
+        </p>
+
+        <div class="grilla-3">
+            <div class="tarjeta-estilo">
+                <i class="fas fa-bullseye icono-tarjeta"></i>
+                <h3>Misión</h3>
+                <p>Brindar productos de bodega de calidad y las mejores opciones en alimentación y moda canina/felina para las familias de nuestra ciudad.</p>
+            </div>
+            <div class="tarjeta-estilo">
+                <i class="fas fa-eye icono-tarjeta"></i>
+                <h3>Visión</h3>
+                <p>Convertirnos en el Market & Pet Shop de referencia en Huancayo, destacados por la buena atención y cariño hacia los animales.</p>
+            </div>
+            <div class="tarjeta-estilo">
+                <i class="fas fa-heart icono-tarjeta"></i>
+                <h3>Valores</h3>
+                <p>Solidez (Rumi), compromiso familiar, empatía animal y responsabilidad en cada venta.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN PRODUCTOS -->
+    <section id="productos" class="seccion contenedor">
+        <span class="subtitulo-seccion">Lo que ofrecemos</span>
+        <h2 class="titulo-seccion">Nuestros Productos</h2>
+
+        <div class="grilla-2">
+            <div class="caja-categoria">
+                <h3><i class="fas fa-paw"></i> Pet Shop</h3>
+                <ul class="lista-productos">
+                    <li><i class="fas fa-check"></i> Comida balanceada para perros y gatos</li>
+                    <li><i class="fas fa-check"></i> Ropa, vestidos y accesorios variados</li>
+                    <li><i class="fas fa-check"></i> Camas afelpadas y muy cómodas</li>
+                    <li><i class="fas fa-check"></i> Snacks, premios y juguetes divertidos</li>
+                </ul>
+            </div>
+
+            <div class="caja-categoria">
+                <h3><i class="fas fa-shopping-basket"></i> Bodega & Market</h3>
+                <ul class="lista-productos">
+                    <li><i class="fas fa-check"></i> Abarrotes en general (arroz, azúcar, fideos)</li>
+                    <li><i class="fas fa-check"></i> Gaseosas, jugos y bebidas heladas</li>
+                    <li><i class="fas fa-check"></i> Snacks, piqueos y galletas</li>
+                    <li><i class="fas fa-check"></i> Artículos de primera necesidad</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN GALERÍA -->
+    <section id="galeria" class="seccion contenedor">
+        <span class="subtitulo-seccion">Imágenes</span>
+        <h2 class="titulo-seccion">Galería de Fotos</h2>
+
+        <div class="grilla-galeria">
+            <div class="item-galeria"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=400" alt="Market"></div>
+            <div class="item-galeria"><img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=400" alt="Ropa mascota"></div>
+            <div class="item-galeria"><img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?q=80&w=400" alt="Comida perro"></div>
+            <div class="item-galeria"><img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?q=80&w=400" alt="Atención"></div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CONTACTO -->
+    <section id="contacto" class="seccion contenedor">
+        <div class="caja-contacto">
+            <div>
+                <h2 style="margin-bottom: 20px;">Contáctanos</h2>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Esquina Julio C. Tello y Grau, Huancayo, Perú</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+51 927 195 817</span>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-instagram"></i>
+                    <a href="https://www.instagram.com/rumi_market_petshop/" target="_blank" style="color: var(--amarillo-logo); text-decoration: none;">@rumi_market_petshop</a>
+                </div>
+            </div>
+
+            <form id="formularioContacto">
+                <input type="text" class="campo-input" placeholder="Tu Nombre" required>
+                <input type="email" class="campo-input" placeholder="Tu Correo" required>
+                <textarea class="campo-input" rows="4" placeholder="Escribe tu mensaje..." required></textarea>
+                <button type="submit" class="btn-principal" style="width: 100%; border: none; cursor: pointer;">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>&copy; 2026 Rumi Market / Pet Shop - Proyecto Web Huancayo</p>
+    </footer>
+
+    <!-- INTERACTIVIDAD JS -->
+    <script>
+        // Script básico para manejar el envio del formulario
+        document.getElementById('formularioContacto').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Te responderemos muy pronto.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
